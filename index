@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulate General of Afghanistan in Istanbul</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #1e5b2a;
+            --secondary-color: #d4af37;
+            --accent-color: #0a3d1f;
+            --light-color: #f5f5f5;
+            --dark-color: #333;
+            --text-color: #222;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-top a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .header-top a:hover {
+            text-decoration: underline;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary-color);
+            box-shadow: var(--shadow);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .consulate-title {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .consulate-title h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .consulate-title p {
+            color: var(--dark-color);
+            font-size: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--accent-color);
+        }
+
+        .dropdown {
+            position: absolute;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: var(--shadow);
+            display: none;
+            z-index: 1;
+        }
+
+        .dropdown li {
+            width: 100%;
+        }
+
+        .dropdown a {
+            color: var(--dark-color);
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+            color: var(--primary-color);
+        }
+
+        .nav-links li:hover .dropdown {
+            display: block;
+        }
+
+        .mobile-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 5px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e6c12e;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        /* Content Sections */
+        .content-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .content-section p {
+            margin-bottom: 20px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .news-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .news-card:hover .news-img img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .news-content p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .news-date {
+            color: #777;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Services Section */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--secondary-color);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-details, .working-hours {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-details h3, .working-hours h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 25px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown {
+                position: static;
+                display: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                box-shadow: none;
+            }
+
+            .dropdown a {
+                padding-left: 40px;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .consulate-title h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="header-contact">
+                    <span><i class="fas fa-phone-alt"></i> 0212 343 87 22</span>
+                </div>
+                <div class="header-links">
+                    <a href="#"><i class="fas fa-envelope"></i> info@afghanconsulate.org.tr</a>
+                    <a href="#"><i class="fas fa-calendar-check"></i> Appointment</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="https://www.afghanconsulate.org.tr/www.afghanconsulateistanbul.com.tr/word/wp-content/uploads/2025/03/cropped-Consulate-General-Profile-Photo-1.10-X.png" alt="Consulate General of Afghanistan Logo">
+                    </div>
+                </div>
+                <div class="consulate-title">
+                    <h1>Consulate General of Afghanistan in Istanbul</h1>
+                    <p>Islamic Emirate of Afghanistan</p>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container nav-container">
+                <div class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li>
+                        <a href="#about"><i class="fas fa-info-circle"></i> About <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="#consulate-general">Consulate General</a></li>
+                            <li><a href="#consulate-affairs">Consulate Affairs</a></li>
+                            <li><a href="#cultural-affairs">Cultural Affairs</a></li>
+                            <li><a href="#refugee-affairs">Refugee Affairs</a></li>
+                            <li><a href="#commercial-attache">Commercial Attache</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="#news"><i class="far fa-newspaper"></i> News & Reports</a></li>
+                    <li><a href="#contact"><i class="fas fa-address-book"></i> Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h2>Welcome to the Consulate General of Afghanistan in Istanbul</h2>
+                <p>Strengthening the centuries-old historical, cultural and economic relationship between Afghanistan and Turkey. We are committed to serving the Afghan community and fostering bilateral relations.</p>
+                <a href="#services" class="btn">Our Services</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="container">
+            <h2 class="section-title">About the Consulate</h2>
+            <div class="content-section">
+                <p>Welcome to the Website of Consulate General of the Islamic Republic of Afghanistan in Istanbul, Turkey. Being as two nations and countries; these countries have centuries of old historical, cultural and economic relationship. It is important to say that these relations are getting deeper and wider day by day with the passage of the time.</p>
+                
+                <p>Afghanistan's consulate general in Istanbul according to the priorities of foreign policy of the country, international conventions and bilateral agreements is constantly trying to effectively represent the interests of the Afghan citizens in Turkey and provide the best consulate services to our clients. At the same time we are tirelessly working in strengthening and deepening economic and cultural relations between two friends and brother countries.</p>
+                
+                <p>As Turkey connects the continents of Europe and Asia, Afghanistan is also the Heart of Asia, which creates countless fields of economic and cultural ties between the two countries.</p>
+                
+                <p>Our main goal in the creation of this website is to provide reliable information about the activities and services of this General Consulate in Istanbul and in general to provide reliable and accurate information about Afghanistan to our esteemed clients.</p>
+                
+                <p>We look forward to your precious suggestions on how to make this website better as we are committed to provide the best quality and standard services to our respected clients. Please note that we are at your service all the time.</p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3>Passport & Visa Services</h3>
+                    <p>Passport renewal, visa applications, and related consular services for Afghan citizens and visitors.</p>
+                    <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Document Attestation</h3>
+                    <p>Legalization and attestation of documents including educational, commercial, and personal certificates.</p>
+                    <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Refugee Assistance</h3>
+                    <p>Support and guidance for Afghan refugees, including repatriation documents and legal assistance.</p>
+                    <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Commercial Services</h3>
+                    <p>Facilitating trade, investment, and business relations between Afghanistan and Turkey.</p>
+                    <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="container">
+            <h2 class="section-title">News & Reports</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="http://www.afghanconsulate.org.tr/www.afghanconsulateistanbul.com.tr/word/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-05-at-5.54.38-PM-1.jpeg" alt="Meeting with Governor of Istanbul">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">September 2025</span>
+                        <h3>Meeting with New Governor of Istanbul</h3>
+                        <p>Mr. Zakaria Barkazi, General Counsel of Afghanistan in Istanbul, met with the honorable Ali Yerlikaya, the new governor of Istanbul.</p>
+                        <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="http://www.afghanconsulate.org.tr/www.afghanconsulateistanbul.com.tr/word/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-12.24.44-PM.jpeg" alt="Website Launch Ceremony">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">March 2025</span>
+                        <h3>Consulate Website Launching Ceremony</h3>
+                        <p>The Afghan General Counsel has launched a website to better serve Afghans through improved services and appointment system.</p>
+                        <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="http://www.afghanconsulate.org.tr/www.afghanconsulateistanbul.com.tr/word/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-06-at-2.55.37-PM.jpeg" alt="Meeting with German Counsel">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">August 2025</span>
+                        <h3>Meeting with German General Counsel</h3>
+                        <p>Mr. Zekaria Barakzai had a meeting with Germany's General Counsel, Mr. Michal Riffinstol, discussing cooperation for Afghan refugees.</p>
+                        <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-details">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Levent Mahallesi, Levent Caddasi No: 28<br>1Levent, Beşiktaş, Istanbul – Turkey</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Telephone</h4>
+                            <p>Tel: 0212 343 87 22<br>Consulate Services: 0506 854 42 31</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>General Inquiries: info@afghanconsulate.org.tr<br>Appointments: appointment@afghanconsulate.org.tr<br>Visa: visa@afghanconsulate.org.tr</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="working-hours">
+                    <h3>Working Hours</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Consulate Hours</h4>
+                            <p>Monday—Friday: 9:00 AM – 4:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-passport"></i>
+                        </div>
+                        <div>
+                            <h4>Consulate Section</h4>
+                            <p>Monday-Friday: 9:00 AM – 3:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div>
+                            <h4>Emergency Contact</h4>
+                            <p>For emergencies outside working hours, please call the main number for instructions.</p>
+                        </div>
+                    </div>
+                    
+                    <a href="mailto:appointment@afghanconsulate.org.tr" class="btn" style="display: block; text-align: center; margin-top: 20px;">Book an Appointment</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Consulate General of Afghanistan</h3>
+                    <p>Representing the interests of Afghan citizens in Turkey and strengthening bilateral relations between Afghanistan and Turkey.</p>
+                    <p>Islamic Emirate of Afghanistan</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#news">News & Reports</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Passport & Visa</a></li>
+                        <li><a href="#">Document Attestation</a></li>
+                        <li><a href="#">Refugee Assistance</a></li>
+                        <li><a href="#">Commercial Services</a></li>
+                        <li><a href="#">Complaints</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Levent Caddasi No: 28, Istanbul</p>
+                    <p><i class="fas fa-phone"></i> 0212 343 87 22</p>
+                    <p><i class="fas fa-envelope"></i> info@afghanconsulate.org.tr</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Consulate General of Afghanistan in Istanbul. All rights reserved.</p>
+                <p>This is a demonstration website for the Consulate General of Afghanistan in Istanbul.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navLinks').classList.remove('active');
+                document.querySelector('#mobileToggle i').classList.remove('fa-times');
+                document.querySelector('#mobileToggle i').classList.add('fa-bars');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active class to current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
